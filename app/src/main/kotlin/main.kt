@@ -28,7 +28,7 @@ fun Application.configurePlugins() {
 
 // In-memory storage for demo and learning
 val users = mutableListOf<User>()
-val nextId = 1
+var nextId = 1
 
 fun Application.configureRouting() {
     routing {
@@ -58,20 +58,17 @@ fun Application.configureRouting() {
         }
 
         // POST create user
+        post("/user/create") {
+            val request = call.receive<CreateUserRequest>()
+            val newUser = User(
+                id = nextId++,
+                name = request.name,
+                email = request.email
+            )
+            users.add(newUser)
+            call.respond(HttpStatusCode.Created, newUser)
+        }
 
         // POST update user
     }
 }
-
-
-// Create Data Models
-data class User(
-    val id: Int,
-    val name: String,
-    val email: String
-)
-
-data class CreateUserRequest(
-    val name: String,
-    val email: String
-)
