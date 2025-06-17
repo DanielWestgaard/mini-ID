@@ -6,6 +6,8 @@ An easy, but realistic Kotlin-based identity service that tries to imitate a sim
 .
 ├── README.md                                   # Description of this project
 │
+├── main.kt                                     # Orchestrator of ktor server
+│
 ├── api/                                        # All API-endpoints, using ktor
 │   ├── login.kt                                # POST /login - generates access_token and id_token
 │   ├── userinfo.kt                             # GET /userinfo - userinfo if token is valid
@@ -22,3 +24,5 @@ An easy, but realistic Kotlin-based identity service that tries to imitate a sim
 # Requirements
 - `ktor`: Kotlin-based framework for building asynchronous, connected systems, including both client-side and server-side applications.
     - Eg. on Linux/Mac, run `brew install ktor`.
+- `kotlin`: Kotlin Compiler:
+    - Eg. `brew install kotlin`
